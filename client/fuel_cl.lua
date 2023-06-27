@@ -1703,9 +1703,11 @@ RegisterNetEvent('cdn-fuel:jerrycan:refueljerrycan', function(data)
 				local jerryCanData = data.itemData
 				local srcPlayerData = QBCore.Functions.GetPlayerData()
 				if Config.Ox.Inventory then
-					TriggerServerEvent('cdn-fuel:info', "add", tonumber(refuelAmount), srcPlayerData, 'jerrycan')
+					local amount = tonumber(refuel.amount)		
+					TriggerServerEvent('cdn-fuel:info', "add", amount, srcPlayerData, 'jerrycan')
 				else
-					TriggerServerEvent('cdn-fuel:info', "add", tonumber(refuelAmount), srcPlayerData, jerryCanData)
+					local amount = tonumber(refuel.amount)	
+					TriggerServerEvent('cdn-fuel:info', "add", amount, srcPlayerData, jerryCanData)
 				end
 				if RefuelingType == nil then	
 					if Config.PlayerOwnedGasStationsEnabled and not Config.UnlimitedFuel then
